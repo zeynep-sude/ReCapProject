@@ -1,6 +1,7 @@
 ﻿using Bussiness.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bussiness.Concrete
 {
-    public class CarManager : ICarServise
+    public class CarManager : ICarService
     {
         ICarDal _carDal;
 
@@ -31,12 +32,25 @@ namespace Bussiness.Concrete
             }
         }
 
+        public void CarDelete(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CarRemove(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
            return _carDal.GetAll();
         }
 
-      
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }
 
         public List<Car> GetCarsByBrandId(int id)
         {
