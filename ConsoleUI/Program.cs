@@ -15,16 +15,23 @@ namespace ConsoleUI
             //BrandTest();
             // UserTest();
             //CustomerTest();
+            RentalTest();
+
+        }
+
+        private static void RentalTest()
+        {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.GetAll();
-            
+            var result2 = rentalManager.GetRentDate(new DateTime(2022, 8, 8));
+            Console.WriteLine(result2.Message);
             var newRental = new Rental
             {
-                CarId=4,
-                CustomerId=2,
-                RentalId=1,
-                RentDate=new DateTime(2022,8,8),
-                ReturnDate=new DateTime(2022,8,9)
+                CarId = 4,
+                CustomerId = 2,
+                RentalId = 1,
+                RentDate = new DateTime(2022, 8, 8),
+                ReturnDate = new DateTime(2022, 8, 9)
             };
             rentalManager.Add(newRental);
             if (result.Success)
@@ -34,8 +41,6 @@ namespace ConsoleUI
                     Console.WriteLine(rental.RentalId);
                 }
             }
-
-
         }
 
         private static void CustomerTest()
