@@ -30,7 +30,7 @@ namespace Bussiness.Concrete
                 return new ErrorResult(Messages.BrandNameInvalid+ " "+Messages.CarDailyPrice);
             }
            _carDal.Add(car);
-            return new Result(true,"Ürün Eklendi");
+            return new Result(true,"Araba Eklendi");
         }
 
         public IResult CarDelete(Car car)
