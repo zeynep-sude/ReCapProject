@@ -35,12 +35,14 @@ namespace Bussiness.Concrete
 
         public IResult CarDelete(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Delete(car);
+            return new SuccessResult();
         }
 
         public IResult CarRemove(Car car)
         {
-            throw new NotImplementedException();
+           _carDal.Update(car);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Car>> GetAll()
