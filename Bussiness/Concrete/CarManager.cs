@@ -1,5 +1,8 @@
 ﻿using Bussiness.Abstract;
 using Bussiness.Constans;
+using Bussiness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Untilities.Result.Abstract;
 using Core.Untilities.Results.Abstract;
 using Core.Untilities.Results.Concrete;
@@ -22,13 +25,11 @@ namespace Bussiness.Concrete
         {
             _carDal = carDal;
         }
-        
+
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(CarDetailDto carDetailDto,Car car) 
         {
-            if (carDetailDto.BrandName.Length<2 && car.DailyPrice==0)
-            {
-                return new ErrorResult(Messages.BrandNameInvalid+ " "+Messages.CarDailyPrice);
-            }
+            
            _carDal.Add(car);
             return new Result(true,"Araba Eklendi");
         }
